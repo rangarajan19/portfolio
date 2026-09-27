@@ -79,12 +79,6 @@ section[id] {
   scroll-snap-align: start;
 }
 
-.slide {
-  min-height: calc(100dvh - var(--header-h));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 ::selection {
   background: var(--amber-soft);

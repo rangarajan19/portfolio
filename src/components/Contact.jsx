@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="slide border-t border-[var(--mist)] bg-[var(--paper-raised)]"
+      className="border-t border-[var(--mist)] bg-[var(--paper-raised)] py-20 sm:py-24"
     >
       <div className="mx-auto w-full max-w-5xl px-6">
         <h2 className="font-display text-2xl font-bold tracking-tight sm:text-[1.9rem]">

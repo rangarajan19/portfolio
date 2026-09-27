@@ -5,7 +5,7 @@ import CountUp from "./CountUp";
 
 export default function Hero() {
   return (
-    <section id="top" className="slide relative mx-auto w-full max-w-5xl px-6 py-14 sm:py-16">
+    <section id="top" className="mx-auto w-full max-w-5xl px-6 pb-16 pt-8 sm:pt-10">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div>
           <p className="font-mono text-sm text-[var(--steel)]">{profile.location}</p>
@@ -62,7 +62,7 @@ export default function Hero() {
 
       <a
         href="#work"
-        className="scroll-cue absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 font-mono text-[0.68rem] text-[var(--ink-faint)] hover:text-[var(--ink)] lg:flex"
+        className="scroll-cue mt-14 hidden w-fit flex-col items-center gap-1.5 font-mono text-[0.68rem] text-[var(--ink-faint)] hover:text-[var(--ink)] lg:flex"
       >
         scroll
         <span className="h-5 w-px bg-current" />
