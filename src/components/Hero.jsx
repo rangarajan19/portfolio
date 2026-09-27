@@ -5,20 +5,20 @@ import CountUp from "./CountUp";
 
 export default function Hero() {
   return (
-    <section id="top" className="mx-auto w-full max-w-5xl px-6 pb-16 pt-8 sm:pt-10">
+    <section id="top" className="mx-auto w-full max-w-5xl px-6 pb-12 pt-6 sm:pt-7">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div>
           <p className="font-mono text-sm text-[var(--steel)]">{profile.location}</p>
-          <h1 className="font-display mt-3 text-[2.75rem] font-extrabold leading-[1.05] tracking-tight sm:text-[3.6rem]">
+          <h1 className="font-display mt-2 text-[2.35rem] font-extrabold leading-[1.05] tracking-tight sm:text-[2.9rem]">
             {profile.name}
           </h1>
-          <p className="font-display mt-2 text-xl font-semibold text-[var(--ink-soft)] sm:text-2xl">
+          <p className="font-display mt-2 text-lg font-semibold text-[var(--ink-soft)] sm:text-xl">
             {profile.role} — {profile.tagline}
           </p>
-          <p className="measure mt-6 text-[1.05rem] leading-relaxed text-[var(--ink-soft)]">
+          <p className="measure mt-4 text-[0.98rem] leading-relaxed text-[var(--ink-soft)]">
             {profile.summary}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-3">
             <a
               href={`${import.meta.env.BASE_URL}resume.pdf`}
               download="Rangarajan G - Resume.pdf"
@@ -45,7 +45,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-[var(--mist)] pt-6 sm:max-w-md">
+          <dl className="mt-6 grid grid-cols-3 gap-6 border-t border-[var(--mist)] pt-4 sm:max-w-md">
             {stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="font-display text-2xl font-bold text-[var(--ink)] sm:text-3xl">
@@ -62,7 +62,7 @@ export default function Hero() {
 
       <a
         href="#work"
-        className="scroll-cue mt-14 hidden w-fit flex-col items-center gap-1.5 font-mono text-[0.68rem] text-[var(--ink-faint)] hover:text-[var(--ink)] lg:flex"
+        className="scroll-cue mt-8 hidden w-fit flex-col items-center gap-1.5 font-mono text-[0.68rem] text-[var(--ink-faint)] hover:text-[var(--ink)] lg:flex"
       >
         scroll
         <span className="h-5 w-px bg-current" />
