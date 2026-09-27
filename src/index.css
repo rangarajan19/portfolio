@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f1f3f2;
+  --paper-raised: #e8ebe9;
+  --ink: #1b2430;
+  --ink-soft: #57626f;
+  --ink-faint: #8b96a0;
+  --console: #10151c;
+  --console-line: #2a3542;
+  --console-text: #dbe4ea;
+  --amber: #d98e2b;
+  --amber-soft: #f4e3c4;
+  --steel: #3c5b73;
+  --mist: #d3dad8;
+  --header-h: 64px;
+
+  --dot-amber: #d98e2b;
+  --dot-blue: #5b8fae;
+  --dot-green: #5fae82;
+  --dot-rose: #d1667a;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  Content visibility is never gated by JavaScript. Every element below is
+  opaque and in place by default; animation-timeline only progressively
+  enhances browsers that support it (Chrome/Edge). Where the feature is
+  unsupported, the 0-duration animation resolves to its end state (fully
+  visible) on the very first frame, so nothing can get stuck hidden.
+*/
+.reveal {
+  animation: reveal-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 35%;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+section[id] {
+  scroll-margin-top: var(--header-h);
+  scroll-snap-align: start;
+}
+
+.slide {
+  min-height: calc(100dvh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+::selection {
+  background: var(--amber-soft);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--steel);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+/* Scroll progress bar: pure CSS, scroll(root) timeline. Degrades to a
+   static full-width line where unsupported — decorative only. */
+.scroll-progress {
+  transform-origin: left;
+  animation: grow-progress linear both;
+  animation-timeline: scroll(root);
+}
+
+@keyframes grow-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports not (animation-timeline: scroll(root)) {
+  .scroll-progress {
+    display: none;
+  }
+}
+
+.blink-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--amber);
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes trace-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trace-line {
+  animation: trace-in 220ms ease-out both;
+}
+
+@keyframes step-pulse {
+  0% {
+    border-color: var(--mist);
+    background: var(--paper);
+    color: var(--ink-faint);
+  }
+  45% {
+    border-color: var(--amber);
+    background: var(--amber-soft);
+    color: var(--ink);
+  }
+  100% {
+    border-color: var(--mist);
+    background: var(--paper-raised);
+    color: var(--ink);
+  }
+}
+
+.step-chip {
+  border-color: var(--mist);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.step-chip.step-chip--play {
+  animation: step-pulse 550ms ease-out both;
+  animation-delay: calc(var(--i) * 160ms + 400ms);
+}
+
+@supports (animation-timeline: view()) {
+  .step-chip.step-chip--play {
+    animation: step-pulse 550ms ease-out both;
+    animation-delay: calc(var(--i) * 140ms);
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+}
+
+.step-chip:hover {
+  border-color: var(--amber);
+  background: var(--amber-soft);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+@keyframes dot-color-pulse {
+  0%,
+  100% {
+    background-color: var(--console-line);
+  }
+  50% {
+    background-color: var(--dot-color, var(--amber));
+  }
+}
+
+.pulse-dot {
+  background-color: var(--console-line);
+  animation: dot-color-pulse 1.6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 200ms);
+}
+
+@keyframes cue-bob {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 5px);
+  }
+}
+
+.scroll-cue {
+  animation: cue-bob 1.8s ease-in-out infinite;
+}
+
+.timeline-dot {
+  background: var(--steel);
+}
+
+@keyframes dot-settle {
+  from {
+    transform: scale(0.5);
+    background: var(--mist);
+  }
+  to {
+    transform: scale(1);
+    background: var(--steel);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .timeline-dot {
+    animation: dot-settle 300ms ease-out both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 70%;
+  }
+}
