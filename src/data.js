@@ -125,6 +125,14 @@ export const contributions = [
   {
     repo: "HelpCode-ai/anythingmcp",
     repoUrl: "https://github.com/HelpCode-ai/anythingmcp",
+    pr: "#818",
+    prUrl: "https://github.com/HelpCode-ai/anythingmcp/pull/818",
+    title: "Real multipart file uploads for connectors — fetches a URL server-side and attaches it as an actual file part instead of stringifying it",
+    note: "closes #645 · merged",
+  },
+  {
+    repo: "HelpCode-ai/anythingmcp",
+    repoUrl: "https://github.com/HelpCode-ai/anythingmcp",
     pr: "#698",
     prUrl: "https://github.com/HelpCode-ai/anythingmcp/pull/698",
     title: "Added an adapter:new scaffolder so new connector adapters start from a template",
