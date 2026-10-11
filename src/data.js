@@ -125,6 +125,14 @@ export const contributions = [
   {
     repo: "HelpCode-ai/anythingmcp",
     repoUrl: "https://github.com/HelpCode-ai/anythingmcp",
+    pr: "#1019",
+    prUrl: "https://github.com/HelpCode-ai/anythingmcp/pull/1019",
+    title: "Added a Connector Failure Alerts card to admin settings — configure, test and rotate secrets for an alert webhook",
+    note: "relates to #1006 · merged",
+  },
+  {
+    repo: "HelpCode-ai/anythingmcp",
+    repoUrl: "https://github.com/HelpCode-ai/anythingmcp",
     pr: "#818",
     prUrl: "https://github.com/HelpCode-ai/anythingmcp/pull/818",
     title: "Real multipart file uploads for connectors — fetches a URL server-side and attaches it as an actual file part instead of stringifying it",
